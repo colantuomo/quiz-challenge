@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Content, ButtonContent } from './styles';
 import { Button, Title, Subtitle } from '../../../';
 import { useRouter } from 'next/router';
@@ -11,7 +12,7 @@ export function Beginning() {
 
   return (
     <Content>
-      <Title>You`re ready to start?</Title>
+      <Title>You're ready to start?</Title>
       <Subtitle>It gonna take just a few minutes</Subtitle>
       <ButtonContent>
         <Button onClick={startQuiz}>Start</Button>

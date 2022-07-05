@@ -20,7 +20,7 @@ export interface Questions {
 
 export async function getQuestions() {
   const QUESTIONS_URL =
-    'https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple';
+    'https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple&encode=url3986';
   const response = await fetch(QUESTIONS_URL);
   const data = (await response.json()) as OpenTDBtype;
   return data.results.map(adaptQuestion);
@@ -31,9 +31,12 @@ function adaptQuestion({
   incorrect_answers,
   correct_answer,
 }: OpenTDBtQuestions): Questions {
+  const correctAnswer = decodeURIComponent(correct_answer);
   return {
-    question,
-    answers: incorrect_answers.concat(correct_answer),
-    correctAnswer: correct_answer,
+    question: decodeURIComponent(question),
+    answers: incorrect_answers
+      .map((answer) => decodeURIComponent(answer))
+      .concat(correctAnswer),
+    correctAnswer,
   };
 }
