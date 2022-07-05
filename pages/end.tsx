@@ -1,16 +1,16 @@
 import type { NextPage } from 'next';
 import { FlexRowCenter } from '../styles/globalsStyles';
 import { QuizCard } from './components';
-import { Beginning } from './components/QuizCard/Contents';
+import { End } from './components/QuizCard/Contents';
 
-const Home: NextPage = () => {
+const EndScreen: NextPage = () => {
   return (
     <FlexRowCenter>
       <QuizCard>
-        <Beginning />
+        <End />
       </QuizCard>
     </FlexRowCenter>
   );
 };
 
-export default Home;
+export default EndScreen;
