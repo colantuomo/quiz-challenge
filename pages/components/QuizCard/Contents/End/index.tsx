@@ -1,7 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useRouter } from 'next/router';
-import { Answer } from '../../../../interfaces';
+import { useEffect } from 'react';
+import { getSessionQuizID } from '../../../../helpers/storage';
+import { Answer, Quiz } from '../../../../interfaces';
 import { Button } from '../../../Button/style';
+import { QUIZ_ID_KEY } from '../../../constants';
 import { Blocked, Check } from '../../../Icons';
 import { Subtitle, Title } from '../../../Typography/styles';
 import { Container, IconsContainer, MainContent } from './styles';
@@ -29,16 +32,28 @@ const answers: Answer[] = [
   },
 ];
 
-export function End() {
+interface Props {
+  quiz: Quiz;
+}
+
+export function End({ quiz }: Props) {
   const router = useRouter();
+  console.log('quiz ', quiz);
   function renderIcons() {
-    return answers.map(({ isCorrect }) => {
-      return isCorrect ? <Check /> : <Blocked />;
+    if (quiz && quiz.answers?.length === 0) return;
+    return quiz.answers.map(({ isCorrect }, idx) => {
+      return isCorrect ? <Check key={idx} /> : <Blocked key={idx} />;
     });
   }
+
+  useEffect(() => {
+    const quizId = getSessionQuizID();
+    if (!quizId) router.push('/');
+  }, [router]);
+
   return (
     <Container>
-      <IconsContainer>{renderIcons()}</IconsContainer>
+      {/* <IconsContainer>{renderIcons()}</IconsContainer> */}
       <MainContent>
         <Title>You've reached 6 out of 10</Title>
         <Subtitle>
