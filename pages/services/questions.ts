@@ -1,3 +1,4 @@
+import useSWR from 'swr';
 import { Answer } from '../interfaces';
 
 interface OpenTDBtQuestions {
@@ -49,9 +50,12 @@ function adaptQuestion({
   };
 }
 
-export async function startQuiz(): Promise<Quiz> {
-  const URL = `${process.env.URL}/api/question`;
-  const request = await fetch(URL, {
+export function useStartQuiz() {
+  return useSWR('/api/question', startQuiz);
+}
+
+export async function startQuiz(url: string): Promise<Quiz> {
+  const request = await fetch(url, {
     method: 'POST',
   });
   return await request.json();
