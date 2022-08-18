@@ -1,9 +1,11 @@
-import { QUIZ_ID_KEY } from '../components/constants';
+import { QUIZ_ID_KEY } from './constants';
+import { Answer } from '../interfaces';
 
-export function getSessionQuizID() {
-  return sessionStorage.getItem(QUIZ_ID_KEY);
+export function getSessionQuizAnswers(): Answer[] {
+  const answers = sessionStorage.getItem(QUIZ_ID_KEY);
+  return JSON.parse(answers ?? '') ?? [];
 }
 
-export function setSessionQuizID(id: string) {
-  sessionStorage.setItem(QUIZ_ID_KEY, id);
+export function setSessionQuizAnswers(answers: Answer[]) {
+  sessionStorage.setItem(QUIZ_ID_KEY, JSON.stringify(answers));
 }

@@ -7,6 +7,6 @@ export const Title = styled.h1`
 
 export const Subtitle = styled.h2`
   font-size: 1.2rem;
-  font-weight: 100;
+  font-weight: 300;
   color: #959595;
 `;

@@ -1,26 +1,18 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import useSWR from 'swr';
 
 import { FlexRowCenter } from '../styles/globalsStyles';
 import { ProgressBar, QuizCard } from './components';
 import { Question } from './components/QuizCard/Contents';
-import { setSessionQuizID } from './helpers/storage';
-import { Answer, Quiz } from './interfaces';
-import {
-  endQuiz,
-  getQuestions,
-  Questions,
-  startQuiz,
-  useStartQuiz,
-} from './services/questions';
+import { setSessionQuizAnswers } from './helpers/storage';
+import { Answer } from './interfaces';
+import { getQuestions, Questions } from './services/questions';
 interface Props {
   questions: Questions[];
 }
 
 const QuestionScreen: NextPage<Props> = ({ questions }) => {
-  const { data, isValidating } = useStartQuiz();
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [questionCount, setQuestionCount] = useState(0);
   const router = useRouter();
@@ -51,7 +43,6 @@ const QuestionScreen: NextPage<Props> = ({ questions }) => {
     const nextIndex = questionCount + 1;
     const nextQuestion = questions[nextIndex];
     if (!nextQuestion) {
-      navigateToEnd();
       return;
     }
     setQuestionCount(nextIndex);
@@ -62,16 +53,12 @@ const QuestionScreen: NextPage<Props> = ({ questions }) => {
     return (startNumber / questions.length) * 100;
   }
 
-  async function navigateToEnd() {
-    if (!data) return;
-    const { id } = await endQuiz(data.id, answers);
-    setSessionQuizID(id);
-    router.push('/end');
-  }
-
   useEffect(() => {
-    if (!isValidating && !data?.id) router.push('/');
-  }, [data, isValidating, router]);
+    if (answers.length === questions.length) {
+      setSessionQuizAnswers(answers);
+      router.push('/end');
+    }
+  }, [answers, questions, router]);
 
   return (
     <FlexRowCenter>

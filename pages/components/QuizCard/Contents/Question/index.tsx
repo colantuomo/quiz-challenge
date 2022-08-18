@@ -1,5 +1,5 @@
 import { Questions } from '../../../../services/questions';
-import { Button } from '../../../Button/style';
+import { Button } from '../../../Button';
 import { Title } from '../../../Typography/styles';
 import { ButtonsContainer, QuestionContainer } from './styles';
 
