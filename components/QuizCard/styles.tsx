@@ -8,4 +8,11 @@ export const Card = styled.div`
   -webkit-box-shadow: 0px 24px 43px -20px rgba(0, 0, 0, 0.71);
   box-shadow: 0px 24px 43px -20px rgba(0, 0, 0, 0.71);
   padding: 2rem;
+
+  @media (max-width: 750px) {
+    height: 100vh;
+    width: 100%;
+    border-radius: 0;
+    text-align: center;
+  }
 `;
