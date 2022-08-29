@@ -11,7 +11,7 @@ export const ButtonDiv = styled.button`
   width: 250px;
   height: 50px;
   font-size: 1.2rem;
-  font-weight: 100;
+  font-weight: 300;
   border: none;
   border-radius: 5px;
   &:hover {
