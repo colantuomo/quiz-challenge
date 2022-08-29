@@ -1,4 +1,6 @@
+import { useCallback } from 'react';
 import { useRouter } from 'next/router';
+import Fireworks from '@fireworks-js/react';
 
 import { MIN_CORRECT_ANSWERS } from '../../../../helpers/constants';
 import { Answer } from '../../../../interfaces';
@@ -6,8 +8,6 @@ import { Button } from '../../../Button';
 import { Blocked, Check } from '../../../Icons';
 import { Subtitle, Title } from '../../../Typography/styles';
 import { Container, IconsContainer, MainContent } from './styles';
-import Fireworks from '@fireworks-js/react';
-import { useCallback } from 'react';
 
 interface Props {
   answers?: Answer[];

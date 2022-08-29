@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { Content, ButtonContent } from './styles';
-import { Button, Title, Subtitle } from '../../../';
+import { Subtitle, Title } from '../../../Typography/styles';
+import { Button } from '../../../Button';
 
 export function Beginning() {
   const router = useRouter();

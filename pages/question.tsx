@@ -1,13 +1,14 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { ProgressBar } from '../components/ProgressBar';
+import { QuizCard } from '../components/QuizCard';
+import { Question } from '../components/QuizCard/Contents';
+import { setSessionQuizAnswers } from '../helpers/storage';
+import { Answer } from '../interfaces';
+import { getQuestions, Questions } from '../services/questions';
 
 import { FlexRowCenter } from '../styles/globalsStyles';
-import { ProgressBar, QuizCard } from './components';
-import { Question } from './components/QuizCard/Contents';
-import { setSessionQuizAnswers } from './helpers/storage';
-import { Answer } from './interfaces';
-import { getQuestions, Questions } from './services/questions';
 interface Props {
   questions: Questions[];
 }

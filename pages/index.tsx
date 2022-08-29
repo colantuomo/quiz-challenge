@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
+import { QuizCard } from '../components/QuizCard';
+import { Beginning } from '../components/QuizCard/Contents';
 import { FlexRowCenter } from '../styles/globalsStyles';
-import { QuizCard } from './components';
-import { Beginning } from './components/QuizCard/Contents';
 
 const Home: NextPage = () => {
   return (
