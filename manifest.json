@@ -1,11 +1,6 @@
 {
   "name": "Quiz App",
   "short_name": "QuizApp",
-  "description": "A simple quiz app",
-  "theme_color": "#8952FF",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "start_url": "/",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
@@ -28,5 +23,11 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "description": "A simple quiz app",
+  "theme_color": "#8952FF",
+  "background_color": "#ffffff",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
 }
