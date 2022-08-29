@@ -1,8 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
+
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+
 import { Content, ButtonContent } from './styles';
 import { Button, Title, Subtitle } from '../../../';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
 
 export function Beginning() {
   const router = useRouter();

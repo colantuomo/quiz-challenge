@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const ButtonDiv = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
   cursor: pointer;
   background-color: #75c5ff;
   color: white;

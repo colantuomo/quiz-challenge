@@ -1,12 +1,13 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useRouter } from 'next/router';
-import { useCallback, useEffect } from 'react';
+
 import { MIN_CORRECT_ANSWERS } from '../../../../helpers/constants';
 import { Answer } from '../../../../interfaces';
 import { Button } from '../../../Button';
 import { Blocked, Check } from '../../../Icons';
 import { Subtitle, Title } from '../../../Typography/styles';
 import { Container, IconsContainer, MainContent } from './styles';
+import Fireworks from '@fireworks-js/react';
+import { useCallback } from 'react';
 
 interface Props {
   answers?: Answer[];
@@ -51,12 +52,22 @@ export function End({ answers }: Props) {
 
   const { title, subTitle, buttonTitle } = buildScreenInfosByCorrectAnswers();
 
-  useEffect(() => {
-    if (!answers?.length) router.push('/');
-  }, [answers, router]);
-
   return (
     <Container>
+      {passedTheTest() && (
+        <Fireworks
+          options={{ opacity: 0.5 }}
+          style={{
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            position: 'fixed',
+            background: 'transparent',
+          }}
+        />
+      )}
+
       <IconsContainer>{renderIcons()}</IconsContainer>
       <MainContent>
         <Title>{title}</Title>

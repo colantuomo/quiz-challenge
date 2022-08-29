@@ -12,7 +12,7 @@ interface Props {
   questions: Questions[];
 }
 
-const QuestionScreen: NextPage<Props> = ({ questions }) => {
+const QuestionScreen: NextPage<Props> = ({ questions }: Props) => {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [questionCount, setQuestionCount] = useState(0);
   const router = useRouter();
