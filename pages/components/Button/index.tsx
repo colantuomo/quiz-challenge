@@ -1,4 +1,3 @@
-import { Spinner } from '../Spinner';
 import { ButtonDiv } from './style';
 import ReactLoading from 'react-loading';
 
