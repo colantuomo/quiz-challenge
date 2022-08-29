@@ -27,6 +27,7 @@
   "description": "A simple quiz app",
   "theme_color": "#8952FF",
   "background_color": "#ffffff",
+  "scope": "/",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"
