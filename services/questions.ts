@@ -26,17 +26,26 @@ export async function getQuestions() {
   return data.results.map(adaptQuestion);
 }
 
+function shuffleArray(array: any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 function adaptQuestion({
   question,
   incorrect_answers,
   correct_answer,
 }: OpenTDBtQuestions): Questions {
   const correctAnswer = decodeURIComponent(correct_answer);
+  const answers = incorrect_answers
+    .map((answer) => decodeURIComponent(answer))
+    .concat(correctAnswer);
   return {
     question: decodeURIComponent(question),
-    answers: incorrect_answers
-      .map((answer) => decodeURIComponent(answer))
-      .concat(correctAnswer),
+    answers: shuffleArray(answers),
     correctAnswer,
   };
 }
